@@ -12,4 +12,6 @@ import pandas_profiling
 df = pd.read_csv(
         "antivirus_dataset.csv",  delimiter='|', index_col=0
 )
+profile = df.profile_report(title='Pandas Profiling Report')
+profile.to_file(output_file="output.html")
 print(df.sample(5))
