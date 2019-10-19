@@ -37,10 +37,10 @@ dataToDrop = ["Name",
               "MinorOperatingSystemVersion",
               "MinorSubsystemVersion"]
 
-data = data.drop(dataToDrop,axis=1)
+data = data.drop(dataToDrop, axis=1)
 print(data.columns)
 
-X = data.iloc[:,:-1]
+X = data.iloc[:, :-1]
 y = data['legitimate']
 
 X_train, X_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size=0.2)

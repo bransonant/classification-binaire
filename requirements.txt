@@ -1,1 +1,4 @@
-avoir python
+pandas
+matplotlib
+numpy
+scikit-learn

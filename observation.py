@@ -17,4 +17,4 @@ data = pd.read_csv(
 
 #profile = df.profile_report(title='Pandas Profiling Report')
 #profile.to_file(output_file="output.html")
-print(df.sample(5))
+print(data.sample(5))
