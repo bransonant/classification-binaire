@@ -1,5 +1,9 @@
 # classification-binaire
 
+## Dataset
+
+Le fichier antivirus_dataset.csv est le fichier contenant les datas pour faire l'apprentissage ensuite.
+
 ## Modélisation
 
 Le fichier observation.py permet de générer le rapport output.html pour modéliser le dataset fourni.
