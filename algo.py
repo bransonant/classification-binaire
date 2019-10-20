@@ -1,47 +1,59 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 15 15:37:55 2019
-
-@author: Admin
-"""
-
-from sklearn import datasets
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import Perceptron
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+import sklearn.datasets
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
 
-# Load the iris dataset
+data = pd.read_csv('antivirus_dataset.csv', delimiter='|', header=0)
 
-iris = datasets.load_iris()
+dataToDrop = ["Name",
+              "md5",
+              "AddressOfEntryPoint",
+              "BaseOfCode",
+              "ExportNb",
+              "ImportsNbOrdinal",
+              "LoaderFlags",
+              "MajorImageVersion",
+              "MajorOperatingSystemVersion",
+              "MinorLinkerVersion",
+              "MinorOperatingSystemVersion",
+              "Machine",
+              "NumberOfRvaAndSizes",
+              "ResourcesMeanSize",
+              "ResourcesMinSize",
+              "SectionAlignment",
+              "SectionMaxVirtualsize",
+              "SectionsMeanRawsize",
+              "SizeOfCode",
+              "SectionsMinVirtualsize",
+              "SizeOfUninitializedData",
+              "Characteristics",
+              "CheckSum",
+              "DllCharacteristics",
+              "ExportNb",
+              "LoadConfigurationSize",
+              "MinorOperatingSystemVersion",
+              "MinorSubsystemVersion"]
 
-# Create our X and y data
-X = iris.data
-y = iris.target
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+for col in dataToDrop:
+    try:
+        data = data.drop(col, axis=1)
+    except:
+        print("{} not found".format(col))
 
-sc = StandardScaler()
-sc.fit(X_train)
+X = data.drop('legitimate', axis=1)
+Y = data['legitimate']
 
-X_train_std = sc.transform(X_train)
-X_test_std = sc.transform(X_test)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.1, stratify=Y, random_state=1)
 
-# Create a perceptron object with the parameters: 40 iterations (epochs) over the data, and a learning rate of 0.1
-ppn = Perceptron(max_iter=40, eta0=0.1, random_state=0)
+#select the 100k first rows
+X_train, y_train = X_train.iloc[:100000,:], y_train.iloc[:100000]
 
-# Train the perceptron
-ppn.fit(X_train_std, y_train)
+clf = SVC(gamma='auto')
 
-# Apply the trained perceptron on the X data to make predicts for the y test data
-y_pred = ppn.predict(X_test_std)
+#training procedure
+clf.fit(X_train, y_train) 
 
-# View the predicted y test data
-y_pred
-
-# View the true y test data
-y_test
-
-# View the accuracy of the model, which is: 1 - (observations predicted wrong / total observations)
-print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))
+#testing procedure
+print(clf.score(X_test, y_test))
