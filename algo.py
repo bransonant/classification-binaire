@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Oct 15 14:03:00 2019
+
+@author: BRANSON Antoine & CHATELET Robin
+"""
+
 import sklearn.datasets
 import numpy as np
 import pandas as pd
