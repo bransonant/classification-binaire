@@ -5,16 +5,11 @@ Created on Tue Oct 15 11:13:50 2019
 @author: Robin Chatelet & Antoine Branson
 """
 
-import numpy as np
 import pandas as pd
+# noinspection PyUnresolvedReferences
 import pandas_profiling
-from sklearn.linear_model import Perceptron
 
-data = pd.read_csv(
-    "antivirus_dataset.csv",  delimiter='|', index_col=0
-)
-
-
-#profile = df.profile_report(title='Pandas Profiling Report')
-#profile.to_file(output_file="output.html")
-print(data.sample(5))
+dataFrame = pd.read_csv("antivirus_dataset.csv", delimiter='|', index_col=0)
+profile = dataFrame.profile_report(title='Pandas Profiling Report')
+rejected_variables = profile.get_rejected_variables(threshold=0.9)
+profile.to_file(output_file="Pandas_profiling_report.html")

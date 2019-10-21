@@ -1,5 +1,4 @@
-Python 3
-pandas
-matplotlib
-numpy
-scikit-learn
+#Requirements afin d'exécuter nos deux scripts Python
+pandas==0.25.2
+pandas_profiling==2.3.0
+scikit_learn==0.21.3
