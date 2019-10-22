@@ -15,8 +15,12 @@ possible d'utiliser dans notre programme
 
 ## Apprentissage
 
-Le fichier algo.py contient la partie apprentissage et permet d'obtenir un pourcentage de confiance d'environ 98,5%.
-Afin de construite notre programme, nous avons implémenté l'algorithme SVC.
+Le fichier algo.py contient la partie apprentissage et permet d'obtenir un pourcentage de confiance d'environ 93,5%.
+Afin de construire notre programme, nous avons implémenté l'algorithme SVC.
+
+Le fichier knnmodel.py contient une autre implémentation de la partie apprentissage et permet d'obtenir un pourcentage 
+de confiance d'environ 98,3%.
+Nous utilisons dans ce cas-ci le modèle KNN.
 
 ## Requirements
 

@@ -5,17 +5,10 @@ Created on Tue Oct 20 09:52:28 2019
 @author: Branson Antoine & Chatelet Robin
 """
 
-#import required packages
-import sklearn.datasets
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+import sklearn.datasets
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn import preprocessing
-from sklearn import metrics
-
-
 
 data = pd.read_csv('antivirus_dataset.csv', delimiter='|', header=0)
 
@@ -48,25 +41,25 @@ dataToDrop = ["Name",
               "MinorOperatingSystemVersion",
               "MinorSubsystemVersion"]
 
-#loading dataset and dropping columns unused
+# loading dataset and dropping columns unused
 for col in dataToDrop:
     try:
         data = data.drop(col, axis=1)
     except:
-        print("{} not found".format(col)) 
+        print("{} not found".format(col))
 
 X = data.drop('legitimate', axis=1)
 Y = data['legitimate']
 
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.1, stratify=Y, random_state=1)
 
-#dataset contains 138047 lines
-X_train, y_train = X_train.iloc[:138047,:], y_train.iloc[:138047]
+# dataset contains 138047 lines
+X_train, y_train = X_train.iloc[:138047, :], y_train.iloc[:138047]
 
-#using the knn model
+# using the knn model
 knn = KNeighborsClassifier(n_neighbors=5)
 knn.fit(X_train, y_train)
 y_pred = knn.predict(X_test)
 
 # Model Accuracy
-print("Accuracy:",sklearn.metrics.accuracy_score(y_test, y_pred))
+print("Accuracy:", sklearn.metrics.accuracy_score(y_test, y_pred))
