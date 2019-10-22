@@ -3,9 +3,6 @@
 ## Dataset
 
 Le fichier antivirus_dataset.csv est le fichier contenant les datas pour faire l'apprentissage
-```bash
-pip install foobar
-```
 
 ## Modélisation
 
@@ -24,3 +21,8 @@ Afin de construite notre programme, nous avons implémenté l'algorithme SVC.
 ## Requirements
 
 Afin d'exécuter nos deux scripts Python, il est nécessaire d'installer les packages listés dans le requirements.txt
+```bash
+pip3 install -r requirements.txt
+```
+
+
