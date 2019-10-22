@@ -22,6 +22,10 @@ Le fichier knnmodel.py contient une autre implémentation de la partie apprentis
 de confiance d'environ 98,3%.
 Nous utilisons dans ce cas-ci le modèle KNN.
 
+Le fichier decisiontreemodel.py contient une nouvelle implémentation de la partie apprentissage qui nous permet 
+d'obtenir le pourcentage de 99,1%.
+Nous utilisons dans ce cas le modèle de l'arbre de décision.
+
 ## Requirements
 
 Afin d'exécuter nos deux scripts Python, il est nécessaire d'installer les packages listés dans le requirements.txt
