@@ -23,15 +23,15 @@ from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 
 h = .02  # Step size in the mesh
 
-names = ["Nearest Neighbors",
+names = ["K Nearest Neighbors",
          "Linear SVM",
-         "RBF SVM",
+         "Radial Basis Function SVM",
          "Gaussian Process",
          "Decision Tree",
          "Random Forest",
-         "Neural Net",
+         "Neural Network",
          "Naive Bayes",
-         "QDA"]
+         "Quadratic Discriminant Analysis"]
 
 classifiers = [
     KNeighborsClassifier(3),
